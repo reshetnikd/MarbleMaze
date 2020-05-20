@@ -151,7 +151,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
                     node.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
                     node.physicsBody?.isDynamic = false
-                    addChild(node)
                 } else if letter == "v" {
                     let node = setNode("vortex", at: position)
                     node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
@@ -161,7 +160,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody?.categoryBitMask = CollisionTypes.vortex.rawValue
                     node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
                     node.physicsBody?.collisionBitMask = 0
-                    addChild(node)
                 } else if letter == "s" {
                     let node = setNode("star", at: position)
                     node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
@@ -170,7 +168,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody?.categoryBitMask = CollisionTypes.star.rawValue
                     node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
                     node.physicsBody?.collisionBitMask = 0
-                    addChild(node)
                 } else if letter == "f" {
                     let node = setNode("finish", at: position)
                     node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
@@ -179,7 +176,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
                     node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
                     node.physicsBody?.collisionBitMask = 0
-                    addChild(node)
                 } else if letter == " " {
                     // this is an empty space - do nothing!
                 } else {
@@ -193,6 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let node = SKSpriteNode(imageNamed: name)
         node.name = name
         node.position = position
+        addChild(node)
         return node
     }
 }
