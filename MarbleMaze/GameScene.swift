@@ -146,17 +146,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let position = CGPoint(x: (64 * column) + 32, y: (64 * row) + 32)
                 
                 if letter == "x" {
-                    let node = SKSpriteNode(imageNamed: "block")
-                    node.position = position
+                    let node = setNode("block", at: position)
 
                     node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
                     node.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
                     node.physicsBody?.isDynamic = false
                     addChild(node)
                 } else if letter == "v" {
-                    let node = SKSpriteNode(imageNamed: "vortex")
-                    node.name = "vortex"
-                    node.position = position
+                    let node = setNode("vortex", at: position)
                     node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
                     node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
                     node.physicsBody?.isDynamic = false
@@ -166,9 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody?.collisionBitMask = 0
                     addChild(node)
                 } else if letter == "s" {
-                    let node = SKSpriteNode(imageNamed: "star")
-                    node.name = "star"
-                    node.position = position
+                    let node = setNode("star", at: position)
                     node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
                     node.physicsBody?.isDynamic = false
                     
@@ -177,15 +172,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody?.collisionBitMask = 0
                     addChild(node)
                 } else if letter == "f" {
-                    let node = SKSpriteNode(imageNamed: "finish")
-                    node.name = "finish"
+                    let node = setNode("finish", at: position)
                     node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
                     node.physicsBody?.isDynamic = false
 
                     node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
                     node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
                     node.physicsBody?.collisionBitMask = 0
-                    node.position = position
                     addChild(node)
                 } else if letter == " " {
                     // this is an empty space - do nothing!
@@ -194,5 +187,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+    }
+    
+    func setNode(_ name: String, at position: CGPoint) -> SKSpriteNode {
+        let node = SKSpriteNode(imageNamed: name)
+        node.name = name
+        node.position = position
+        return node
     }
 }
