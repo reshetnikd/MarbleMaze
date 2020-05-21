@@ -117,8 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
             score += 1
         } else if node.name == "finish" {
-            player.run(SKAction.scale(by: 0.0001, duration: 0.25))
-            player.removeFromParent()
+            player.run(SKAction.sequence([SKAction.scale(to: 0.0001, duration: 0.25), SKAction.removeFromParent()]))
             currentLevel += 1
             if currentLevel > maxLevel {
                 currentLevel = 1
