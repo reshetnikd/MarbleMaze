@@ -23,12 +23,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastTouchPosition: CGPoint?
     var motionManager: CMMotionManager!
     var scoreLabel: SKLabelNode!
+    var levelNodes = [SKSpriteNode]()
     var isGameOver = false
+    var currentLevel = 1
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
         }
     }
+    
+    let maxLevel = 2
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
@@ -113,7 +117,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
             score += 1
         } else if node.name == "finish" {
-            // next level?
+            player.run(SKAction.scale(by: 0.0001, duration: 0.25))
+            player.removeFromParent()
+            currentLevel += 1
+            if currentLevel > maxLevel {
+                currentLevel = 1
+            }
+            levelNodes.forEach { (node) in
+                node.removeFromParent()
+            }
+            loadLevel()
+            createPlayer()
         }
     }
     
@@ -132,11 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func loadLevel() {
-        guard let levelURL = Bundle.main.url(forResource: "level1", withExtension: "txt") else {
+        guard let levelURL = Bundle.main.url(forResource: "level\(currentLevel)", withExtension: "txt") else {
             fatalError("Could not find level1.txt in the app bundle.")
         }
         guard let levelString = try? String(contentsOf: levelURL) else {
-            fatalError("Could not load level1.txt from the app bundle.")
+            fatalError("Could not load level\(currentLevel).txt from the app bundle.")
         }
         
         let lines = levelString.components(separatedBy: "\n")
@@ -189,6 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let node = SKSpriteNode(imageNamed: name)
         node.name = name
         node.position = position
+        levelNodes.append(node)
         addChild(node)
         return node
     }

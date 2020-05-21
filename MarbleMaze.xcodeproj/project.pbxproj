@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3536AAB724765517004DAFF8 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3536AAB624765517004DAFF8 /* level2.txt */; };
 		353AD3B82472C82300EEE543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353AD3B72472C82300EEE543 /* AppDelegate.swift */; };
 		353AD3BA2472C82300EEE543 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 353AD3B92472C82300EEE543 /* GameScene.sks */; };
 		353AD3BE2472C82300EEE543 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353AD3BD2472C82300EEE543 /* GameScene.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3536AAB624765517004DAFF8 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		353AD3B42472C82300EEE543 /* MarbleMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		353AD3B72472C82300EEE543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		353AD3B92472C82300EEE543 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				353AD3D02472C95900EEE543 /* finish@2x.png */,
 				353AD3D12472C95900EEE543 /* level1.txt */,
+				3536AAB624765517004DAFF8 /* level2.txt */,
 				353AD3D22472C95900EEE543 /* star@2x.png */,
 				353AD3D32472C95900EEE543 /* player@2x.png */,
 				353AD3D42472C95900EEE543 /* block@2x.png */,
@@ -159,6 +162,7 @@
 			files = (
 				353AD3C32472C82300EEE543 /* Main.storyboard in Resources */,
 				353AD3DD2472C95900EEE543 /* background@2x.jpg in Resources */,
+				3536AAB724765517004DAFF8 /* level2.txt in Resources */,
 				353AD3DB2472C95900EEE543 /* block@2x.png in Resources */,
 				353AD3BA2472C82300EEE543 /* GameScene.sks in Resources */,
 				353AD3D92472C95900EEE543 /* star@2x.png in Resources */,
