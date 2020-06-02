@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3534FD922486479100AFC5DE /* teleport@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3534FD912486479100AFC5DE /* teleport@2x.png */; };
 		3536AAB724765517004DAFF8 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3536AAB624765517004DAFF8 /* level2.txt */; };
 		353AD3B82472C82300EEE543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353AD3B72472C82300EEE543 /* AppDelegate.swift */; };
 		353AD3BA2472C82300EEE543 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 353AD3B92472C82300EEE543 /* GameScene.sks */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3534FD912486479100AFC5DE /* teleport@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "teleport@2x.png"; sourceTree = "<group>"; };
 		3536AAB624765517004DAFF8 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		353AD3B42472C82300EEE543 /* MarbleMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarbleMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		353AD3B72472C82300EEE543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				353AD3D22472C95900EEE543 /* star@2x.png */,
 				353AD3D32472C95900EEE543 /* player@2x.png */,
 				353AD3D42472C95900EEE543 /* block@2x.png */,
+				3534FD912486479100AFC5DE /* teleport@2x.png */,
 				353AD3D52472C95900EEE543 /* vortex@2x.png */,
 				353AD3D62472C95900EEE543 /* background@2x.jpg */,
 			);
@@ -168,6 +171,7 @@
 				353AD3D92472C95900EEE543 /* star@2x.png in Resources */,
 				353AD3DC2472C95900EEE543 /* vortex@2x.png in Resources */,
 				353AD3D72472C95900EEE543 /* finish@2x.png in Resources */,
+				3534FD922486479100AFC5DE /* teleport@2x.png in Resources */,
 				353AD3D82472C95900EEE543 /* level1.txt in Resources */,
 				353AD3C52472C82400EEE543 /* Assets.xcassets in Resources */,
 				353AD3C82472C82400EEE543 /* LaunchScreen.storyboard in Resources */,
@@ -338,7 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.stanford.MarbleMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -356,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.stanford.MarbleMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

@@ -15,7 +15,8 @@ enum CollisionTypes: UInt32 {
     case wall = 2
     case star = 4
     case vortex = 8
-    case finish = 16
+    case teleport = 16
+    case finish = 32
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -26,6 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var levelNodes = [SKSpriteNode]()
     var isGameOver = false
     var currentLevel = 1
+    var teleportPositions = [CGPoint]()
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -54,6 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.position = CGPoint(x: 16, y: 16)
         scoreLabel.zPosition = 2
         addChild(scoreLabel)
+        print(teleportPositions)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -113,6 +116,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self?.createPlayer()
                 self?.isGameOver = false
             }
+        } else if node.name == "teleport" {
+            let randomIndex = Int.random(in: 0...teleportPositions.count - 1)
+            let move = SKAction.move(to: node.position, duration: 0.25)
+            let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+            let appear = SKAction.move(to: teleportPositions[randomIndex], duration: 0.01)
+            let grow = SKAction.scale(to: 1, duration: 0.25)
+            let sequence = SKAction.sequence([move, scale, appear, grow])
+            
+            player.run(sequence)
         } else if node.name == "star" {
             node.removeFromParent()
             score += 1
@@ -171,6 +183,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     node.physicsBody?.isDynamic = false
                     
                     node.physicsBody?.categoryBitMask = CollisionTypes.vortex.rawValue
+                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+                    node.physicsBody?.collisionBitMask = 0
+                } else if letter == "t" {
+                    let node = setNode("teleport", at: position)
+                    teleportPositions.append(position)
+                    
+                    node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
+                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+                    node.physicsBody?.isDynamic = false
+                    
+                    
+                    node.physicsBody?.categoryBitMask = CollisionTypes.teleport.rawValue
                     node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
                     node.physicsBody?.collisionBitMask = 0
                 } else if letter == "s" {
